@@ -23,7 +23,12 @@ class Scanner:
         self.progress:Progress = progress
     
     def scan(self,directory:str):
-        self.root:DirToScan = DirToScan(pathlib.Path(directory),self)
+        globalignorepath = pathlib.Path(".mregignore")
+        if globalignorepath.exists():
+            globalignore = [IgnoreFile(globalignorepath)]
+        else:
+            globalignore = []
+        self.root:DirToScan = DirToScan(pathlib.Path(directory),self,globalignore)
 
 class DirToScan:
     def __init__(self,path:pathlib.Path,scanner:Scanner,ignores:list[IgnoreFile]=[]):
@@ -43,12 +48,15 @@ class DirToScan:
     def __load_ignore(self):
         ignore = self.path.joinpath(".mregignore")
         if ignore.exists():
-            self.scanner.progress.console.log(f"Ignore at {self.path.joinpath(ignore).absolute()}")
+            self.scanner.progress.console.log(f"Ignore at {ignore.absolute()}")
             self.ignores.append(IgnoreFile(ignore))
     
     def __go(self):
         for path in self.path.iterdir():
+            if any(ignore.match(path) for ignore in self.ignores):
+                self.scanner.progress.console.log(f"ignoring path {path.absolute()}")
+                self.scanner.progress.advance(self.task,1)
+                continue
             if path.is_dir():
-                if not any(ignore.match(path) for ignore in self.ignores):
-                    DirToScan(path,self.scanner,self.ignores.copy())
+                DirToScan(path,self.scanner,self.ignores.copy())
             self.scanner.progress.advance(self.task,1)
