@@ -1,6 +1,6 @@
 [project]
 name = "mregpy"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="MrMcScreamyPants", email="noreply@githubusers.com" },
 ]
