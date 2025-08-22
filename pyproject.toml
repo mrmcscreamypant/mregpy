@@ -15,7 +15,7 @@ license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/mrmcscreamypant/mregpy"
+Homepage = "https://mregpy.readthedocs.io"
 Issues = "https://github.com/mrmcscreamypant/mregpy/issues"
 
 [semantic_release]
