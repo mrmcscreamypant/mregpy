@@ -21,6 +21,11 @@ help:
 autobuild:
 	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)/html" --host "$(SPHINXAUTOBUILDHOST)" $(SPHINXOPTS) $(O)
 
+publish:
+	@cat gh_token.hidden | export GH_TOKEN
+	echo GH_TOKEN
+	@semantic-release --noop version 
+
 .PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
