@@ -14,7 +14,7 @@ console = Console()
 
 @cli.command("scan")
 def main(directory:str):
-    with Progress(console=console,transient=True,expand=True) as progress:
+    with Progress(console=console,transient=False,expand=True) as progress:
         Scanner(progress).scan(directory)
 
 @cli.command("version")

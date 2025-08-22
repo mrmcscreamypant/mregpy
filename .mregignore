@@ -1,5 +1,10 @@
 .git
 .venv
-build/*
-dist/*
-docs/*
+build
+dist
+docs
+__pycache__
+.github
+*.egg-info
+.vscode
+tests
