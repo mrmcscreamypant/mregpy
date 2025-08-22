@@ -8,9 +8,18 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = docs
 BUILDDIR      = build
 
+
+SPHINXAUTOBUILD ?= sphinx-autobuild
+SPHINXAUTOBUILDHOST ?= 0.0.0.0
+
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+
+autobuild:
+	@$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)/html" --host "$(SPHINXAUTOBUILDHOST)" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
 
