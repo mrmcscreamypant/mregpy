@@ -1,6 +1,6 @@
 [project]
 name = "mregpy"
-version = "0.0.0"
+version = "0.0.1"
 authors = [
   { name="MrMcScreamyPants", email="noreply@githubusers.com" },
 ]
@@ -87,6 +87,3 @@ insecure = false
 dist_glob_patterns = ["dist/*"]
 upload_to_vcs_release = true
 build_command = "python -m build"
-
-[semantic_release.remote.token]
-env = "GH_TOKEN"
