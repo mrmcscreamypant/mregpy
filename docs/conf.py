@@ -7,20 +7,23 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'mregpy'
-copyright = '2025, mrmcscreamypants'
-author = 'mrmcscreamypants'
+copyright = '2025, mrmcscreamypant'
+author = 'mrmcscreamypant'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.intersphinx","sphinx.ext.autodoc","sphinx.ext.autosummary"]
+extensions = ["sphinx.ext.intersphinx","sphinx.ext.autodoc","sphinx.ext.autosummary",'myst_parser']
 
 templates_path = ['_templates']
 exclude_patterns = []
 
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
-
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
